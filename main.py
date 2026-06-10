@@ -1,5 +1,9 @@
 import sys
-from stats import word_counter, char_counter, sort_by_nums
+from stats import (
+    word_counter,
+    chars_dict_to_sorted_list,
+    get_chars_dict,
+)
 
 
 def main():
@@ -9,11 +13,9 @@ def main():
 	book_path = sys.argv[1]
 	book_text = get_book_text(book_path)
 	num_words = word_counter(book_text)
-	# next line needs to be changed as to get chars dictionary, instead of char count
-	char_count = char_counter(book_text)
-	# next line needs to sort the chars_dict instead of char_count
-	sorted_list = sort_by_nums(char_count)
-    print_report(book_path, num_words, chars_sorted_list)
+	chars_dict = get_chars_dict(book_text)
+	chars_sorted_list = chars_dict_to_sorted_list(chars_dict)
+	print_report(book_path, num_words, chars_sorted_list)
 
 def get_book_text(filepath):
 	with open(filepath) as f:
