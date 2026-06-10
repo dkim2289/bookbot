@@ -2,6 +2,15 @@ def word_counter(text):
 	words = text.split()
 	return len(words)
 
+def get_chars_dict(text: str) -> dict[str, int]:
+    dict = {}
+    for ea_char in text:
+        lowered = ea_char.lower()
+        if lowered in dict:
+            dict[lowered] += 1
+        else:
+            dict[lowered] = 1
+    return dict
 
 def char_counter(text):
 	text = text.lower()
@@ -13,8 +22,8 @@ def char_counter(text):
 			char_dic[char] = 1
 	return char_dic
 
-def sort_on(items):
-	return items["num"]
+def sort_on(char_count: tuple[str, int]) -> int:
+	return char_count[1]
 
 def sort_by_nums(dic):
 	sorted_list = []
